@@ -23,7 +23,8 @@ class EatlistActivity : AppCompatActivity() {
             .sort("date", Sort.DESCENDING)  //sort() 메서드를 이용하여 날짜순으로 내림차순 정렬
 
         //TodoListAdapter 클래스에 할 일 목록인 realmResult 를 전달하여 어댑터 인스턴스를 생성한다.
-        val adapter = ToEatListAdapter(realmResult) { id ->
+        //this 로 context 를 넘겨줌
+        val adapter = ToEatListAdapter(realmResult, this) { id ->
             startActivity(Intent(this@EatlistActivity, EatlistEditActivity::class.java).putExtra("id", id))
         }
 

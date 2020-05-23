@@ -66,7 +66,7 @@ class EatlistEditActivity : AppCompatActivity() {
 
         //삭제 버튼을 클릭하면 삭제
         deleteFab.setOnClickListener{
-            deleteTodo(id)
+            //deleteTodo(id)
         }
     }
 
@@ -115,19 +115,31 @@ class EatlistEditActivity : AppCompatActivity() {
     }
 
     //할 일 삭제
-    private fun deleteTodo(id : Long){
+     fun deleteTodo(id : Long){
         realm.beginTransaction()
         val deleteItem = realm.where<ToEat>().equalTo("id",id).findFirst()!!
 
         deleteItem.deleteFromRealm()    //메서드를 이용해서 삭제
         realm.commitTransaction()
-
-        //다이얼로그 표시
-        alert ("Food Diary로 이동되었습니다. "){
-            yesButton { finish() }  //yes 버튼을 누르면 finish()메서드를 호출해 현재 액티비티를 종료한다.
-        }.show()
+//        //다이얼로그 표시
+//        alert ("Food Diary로 이동되었습니다. "){
+//            yesButton { finish() }  //yes 버튼을 누르면 finish()메서드를 호출해 현재 액티비티를 종료한다.
+//        }.show()
     }
 
+
+    //먹기 완료 한 것 다이어리로 이동
+    fun gotoDiary(id:Long){
+        realm.beginTransaction()
+
+        val gotoItem = realm.where<ToEat>().equalTo("id",id).findFirst()!!
+
+        //diary 로 이동을 어케시키지....realm객체를 새로 만드나...
+        gotoItem.deleteFromRealm()  //목록에서 삭제
+
+
+        realm.commitTransaction()   //트렌젝션 종료 반영
+    }
 
 
     //현재 가장 큰 id 값을 얻고 1을 더해주는 메서드
