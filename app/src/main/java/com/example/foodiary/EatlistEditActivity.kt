@@ -1,14 +1,17 @@
 package com.example.foodiary
 
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import com.example.foodiary.Class.ToEat
 import io.realm.Realm
 import io.realm.kotlin.createObject
 import io.realm.kotlin.where
 import kotlinx.android.synthetic.main.activity_eatlist_edit.*
 import org.jetbrains.anko.alert
+import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.yesButton
 import java.util.*
 
@@ -29,6 +32,8 @@ class EatlistEditActivity : AppCompatActivity() {
         else{
             updateMode(id)
         }
+
+
 
         //캘린더뷰의 날짜를 선택했을 때 Calender 객체에 설정
         //캘린더뷰에서 날짜를 선택하면 수행할 처리를 setOnDateChangeListner() 메서드로 구현
@@ -64,10 +69,13 @@ class EatlistEditActivity : AppCompatActivity() {
         }
 
 
-        //삭제 버튼을 클릭하면 삭제
+        //다이어리로 저장
         deleteFab.setOnClickListener{
-            //deleteTodo(id)
+
+            startActivity(Intent(this@EatlistEditActivity, DiaryEditActivity::class.java).putExtra("id", id))
+            finish()
         }
+
     }
 
     private fun insertTodo(){
@@ -134,11 +142,11 @@ class EatlistEditActivity : AppCompatActivity() {
 
         val gotoItem = realm.where<ToEat>().equalTo("id",id).findFirst()!!
 
-        //diary 로 이동을 어케시키지....realm객체를 새로 만드나...
         gotoItem.deleteFromRealm()  //목록에서 삭제
 
 
         realm.commitTransaction()   //트렌젝션 종료 반영
+
     }
 
 

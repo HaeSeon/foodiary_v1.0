@@ -8,13 +8,14 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.widget.AppCompatImageButton
 import androidx.recyclerview.widget.RecyclerView
+import com.example.foodiary.Class.ToEat
 import io.realm.OrderedRealmCollection
 import kotlinx.android.synthetic.main.item_toeat.view.*
 
 
 //private val context 로 context 받아옴
-class ToEatListAdapter(private val realmResult: OrderedRealmCollection<ToEat>,private val context:Context,
-                      private val click: (Long) -> Unit) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class ToEatListAdapter(private val realmResult: OrderedRealmCollection<ToEat>, private val context:Context,
+                       private val click: (Long) -> Unit) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder =
         ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_toeat, parent, false))
@@ -23,8 +24,8 @@ class ToEatListAdapter(private val realmResult: OrderedRealmCollection<ToEat>,pr
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val item = realmResult[position]
-        holder.itemView.text1.text = item.title
-        holder.itemView.text2.text = DateFormat.format("yyyy/MM/dd", item.date)
+        holder.itemView.d_text1.text = item.title
+        holder.itemView.d_text2.text = DateFormat.format("yyyy/MM/dd", item.date)
 
         holder.itemView.findViewById<AppCompatImageButton>(R.id.delete_button).setOnClickListener {
             EatlistEditActivity().deleteTodo(item.id)

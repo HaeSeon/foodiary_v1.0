@@ -10,10 +10,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".EatlistEditActivity"></activity>
+        <activity android:name=".DiaryEditActivity"></activity>
+        <activity android:name=".EatlistEditActivity" />
         <activity android:name=".FooddiaryActivity" />
         <activity android:name=".EatlistActivity" />
-
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
