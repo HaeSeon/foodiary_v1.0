@@ -54,7 +54,7 @@
         android:layout_marginBottom="100dp"
         android:ems="10"
 
-
+        android:background="@drawable/edge"
         android:hint="Food Diary 내용을 입력하세요."
         android:inputType="textMultiLine|textNoSuggestions"
         android:lines="5"
