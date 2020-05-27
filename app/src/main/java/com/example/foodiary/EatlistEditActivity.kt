@@ -71,7 +71,6 @@ class EatlistEditActivity : AppCompatActivity() {
 
         //다이어리로 저장
         deleteFab.setOnClickListener{
-
             startActivity(Intent(this@EatlistEditActivity, DiaryEditActivity::class.java).putExtra("id", id))
             finish()
         }

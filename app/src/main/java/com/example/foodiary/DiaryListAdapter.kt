@@ -1,14 +1,22 @@
 package com.example.foodiary
 
+import android.app.Activity
 import android.content.Context
+import android.media.AudioRecord.MetricsConstants.SOURCE
 import android.text.format.DateFormat
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.example.foodiary.Class.Diary
 import io.realm.OrderedRealmCollection
+import kotlinx.android.synthetic.main.activity_diary_edit.*
+import kotlinx.android.synthetic.main.activity_diary_edit.view.*
 import kotlinx.android.synthetic.main.item_diary.view.*
+import org.jetbrains.anko.image
 
 
 class DiaryListAdapter (private val d_realmResult: OrderedRealmCollection<Diary>, private val context: Context,
@@ -23,9 +31,14 @@ class DiaryListAdapter (private val d_realmResult: OrderedRealmCollection<Diary>
         val d_item = d_realmResult[position]
         holder.itemView.d_title.text = d_item.d_title
         holder.itemView.d_date.text = DateFormat.format("yyyy/MM/dd", d_item.d_date)
-        //holder.itemView.d_imageView.image = item.d_src  이미지 어케하지
+       // holder.itemView.d_imageView.image = d_item.d_src
 
         holder.itemView.d_contents.text = d_item.d_text
+
+            //여기서 이미지 어떻게 띄우지,,,,
+        if(d_item.d_src!=null){
+             Glide.with(holder.itemView.context).load(d_item.d_src).into(holder.itemView.findViewById<ImageView>(R.id.d_imageView))
+        }
 
 
         holder.itemView.setOnClickListener { click(d_item.d_id) }
