@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import androidx.core.net.toUri
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
@@ -33,12 +34,18 @@ class DiaryListAdapter (private val d_realmResult: OrderedRealmCollection<Diary>
         holder.itemView.d_date.text = DateFormat.format("yyyy/MM/dd", d_item.d_date)
        // holder.itemView.d_imageView.image = d_item.d_src
 
-        holder.itemView.d_contents.text = d_item.d_text
+        holder.itemView.d_contents.text = d_item.d_src
 
             //여기서 이미지 어떻게 띄우지,,,,
         if(d_item.d_src!=null){
              Glide.with(holder.itemView.context).load(d_item.d_src).into(holder.itemView.findViewById<ImageView>(R.id.d_imageView))
+            //Glide.with(context).load(d_item.d_src).into(holder.itemView.d_imageView)
+
         }
+
+
+
+
 
 
         holder.itemView.setOnClickListener { click(d_item.d_id) }

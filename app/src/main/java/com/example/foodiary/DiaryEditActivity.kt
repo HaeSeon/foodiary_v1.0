@@ -7,8 +7,11 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.ImageView
 import android.widget.TextView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.bumptech.glide.request.RequestOptions
 import com.example.foodiary.Class.Diary
 import com.example.foodiary.Class.ToEat
 import io.realm.Realm
@@ -23,6 +26,8 @@ import org.jetbrains.anko.yesButton
 import java.lang.Exception
 import java.time.LocalDate
 import kotlin.properties.Delegates
+
+
 
 class DiaryEditActivity : AppCompatActivity() {
 
@@ -68,12 +73,7 @@ class DiaryEditActivity : AppCompatActivity() {
         button.setOnClickListener { openGallery() }
     }
 
-//    update layout with Diary Object
-    private fun updateUI(diary : Diary){
-        diaryTitle.text = diary.d_title
-        editdiary.setText(diary.d_text)
-        Glide.with(this).load(diary.d_src).into(imageView)
-    }
+
 
     //추가모드 초기화
     private fun d_insertMode(){
@@ -83,13 +83,11 @@ class DiaryEditActivity : AppCompatActivity() {
         val providedToEat = realm.where<ToEat>().equalTo("id",providedToEatId).findFirst()!!
 
 
-//        create new Item for realm
-//        val newDiary = realm.createObject<Diary>(d_nextId())
-//        newDiary.d_title = providedToEat.title    //할 일
-//        newDiary.d_date = providedToEat.date
 
 
         diaryTitle.text = providedToEat.title
+
+
 
         //완료버튼 클릭시 실행
         d_doneFab.setOnClickListener{
@@ -117,8 +115,6 @@ class DiaryEditActivity : AppCompatActivity() {
         d_newItem.d_src = imageSrc!!
         //toast("${temp}")
 
-        //d_newItem.d_src=   //음.........뭐받지,,,,,,
-        //toast("${d_newItem.d_src}")
 
 
         val deleteItem = realm.where<ToEat>().equalTo("id",providedToEatId).findFirst()!!
@@ -225,7 +221,7 @@ class DiaryEditActivity : AppCompatActivity() {
 
     //갤러리 열기 함수
     private fun openGallery(){
-        val intent: Intent = Intent(Intent.ACTION_GET_CONTENT)
+        val intent: Intent = Intent(Intent.ACTION_OPEN_DOCUMENT)
         intent.setType("image/*")
         //결과를 수신하기 위하여 startActivity 대신 startActivityForResult 를 호출
         startActivityForResult(intent,OPEN_GALLERY)
@@ -242,13 +238,11 @@ class DiaryEditActivity : AppCompatActivity() {
                 var currentImageUrl : Uri? = data?.data
                 imageSrc = currentImageUrl.toString()
                 toast("Uri: ${currentImageUrl}")
-
-
                 try {
-
                     //Glide 를 통해 이미지를 이미지뷰에 띄워줌
                     //val bitmap = BitmapFactory.decodeFile(currentImageUrl.toString())
-                    Glide.with(this).load(currentImageUrl).into(imageView)   //이미지를 로딩하고 into()메서드로 imageView 에 표시
+                    val requestOptions = RequestOptions().diskCacheStrategy(DiskCacheStrategy.ALL)
+                    Glide.with(this).load(imageSrc).apply(requestOptions).into(findViewById<ImageView>(R.id.imageView))   //이미지를 로딩하고 into()메서드로 imageView 에 표시
 
                 }catch (e: Exception){
                     e.printStackTrace()
