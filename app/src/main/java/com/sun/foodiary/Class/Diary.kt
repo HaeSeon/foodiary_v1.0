@@ -1,4 +1,4 @@
-package com.example.foodiary.Class
+package com.sun.foodiary.Class
 
 import io.realm.RealmObject
 import io.realm.annotations.PrimaryKey

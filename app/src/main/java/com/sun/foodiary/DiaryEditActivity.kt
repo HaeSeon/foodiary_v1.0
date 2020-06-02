@@ -1,4 +1,4 @@
-package com.example.foodiary
+package com.sun.foodiary
 
 import android.app.Activity
 import android.content.Intent
@@ -8,19 +8,16 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.ImageView
-import android.widget.TextView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.RequestOptions
-import com.example.foodiary.Class.Diary
-import com.example.foodiary.Class.ToEat
+import com.sun.foodiary.Class.Diary
+import com.sun.foodiary.Class.ToEat
 import io.realm.Realm
 import io.realm.kotlin.createObject
 import io.realm.kotlin.where
 import kotlinx.android.synthetic.main.activity_diary_edit.*
-import kotlinx.android.synthetic.main.item_diary.*
 import org.jetbrains.anko.alert
-import org.jetbrains.anko.db.NULL
 import org.jetbrains.anko.toast
 import org.jetbrains.anko.yesButton
 import java.lang.Exception
@@ -237,7 +234,7 @@ class DiaryEditActivity : AppCompatActivity() {
                 //toast("open")
                 var currentImageUrl : Uri? = data?.data
                 imageSrc = currentImageUrl.toString()
-                toast("Uri: ${currentImageUrl}")
+                //toast("Uri: ${currentImageUrl}")
                 try {
                     //Glide 를 통해 이미지를 이미지뷰에 띄워줌
                     //val bitmap = BitmapFactory.decodeFile(currentImageUrl.toString())

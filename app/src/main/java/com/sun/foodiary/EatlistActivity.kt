@@ -1,10 +1,10 @@
-package com.example.foodiary
+package com.sun.foodiary
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.foodiary.Class.ToEat
+import com.sun.foodiary.Class.ToEat
 import io.realm.Realm
 import io.realm.Sort
 import io.realm.kotlin.where

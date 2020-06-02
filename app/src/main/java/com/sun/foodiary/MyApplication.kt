@@ -1,4 +1,4 @@
-package com.example.foodiary
+package com.sun.foodiary
 
 import android.app.Application
 import io.realm.Realm

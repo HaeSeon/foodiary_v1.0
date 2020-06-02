@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.foodiary">
+    package="com.sun.foodiary">
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
-        android:name=".MyApplication"
+        android:name="com.sun.foodiary.MyApplication"
         android:allowBackup="true"
         android:requestLegacyExternalStorage="true"
         android:icon="@mipmap/ic_launcher"
@@ -15,11 +15,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".DiaryEditActivity" />
-        <activity android:name=".EatlistEditActivity" />
-        <activity android:name=".FooddiaryActivity" />
-        <activity android:name=".EatlistActivity" />
-        <activity android:name=".MainActivity">
+        <activity android:name="com.sun.foodiary.DiaryEditActivity" />
+        <activity android:name="com.sun.foodiary.EatlistEditActivity" />
+        <activity android:name="com.sun.foodiary.FooddiaryActivity" />
+        <activity android:name="com.sun.foodiary.EatlistActivity" />
+        <activity android:name="com.sun.foodiary.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

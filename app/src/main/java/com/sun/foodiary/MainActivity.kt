@@ -1,8 +1,7 @@
-package com.example.foodiary
+package com.sun.foodiary
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import io.realm.Realm
 import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.startActivity
 

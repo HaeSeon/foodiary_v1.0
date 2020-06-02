@@ -10,7 +10,7 @@ android {
 
     defaultConfig {
         vectorDrawables.useSupportLibrary = true
-        applicationId "com.example.foodiary"
+        applicationId "com.sun.foodiary"
         minSdkVersion 29
         targetSdkVersion 29
         versionCode 1

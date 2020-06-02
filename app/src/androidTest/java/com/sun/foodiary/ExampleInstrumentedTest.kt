@@ -1,4 +1,4 @@
-package com.example.foodiary
+package com.sun.foodiary
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

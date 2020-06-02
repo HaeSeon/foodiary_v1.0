@@ -1,15 +1,14 @@
-package com.example.foodiary
+package com.sun.foodiary
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.foodiary.Class.Diary
+import com.sun.foodiary.Class.Diary
 import io.realm.Realm
 import io.realm.Sort
 import io.realm.kotlin.where
 import kotlinx.android.synthetic.main.activity_fooddiary.*
-import org.jetbrains.anko.startActivity
 
 
 class FooddiaryActivity : AppCompatActivity() {

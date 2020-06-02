@@ -1,17 +1,16 @@
-package com.example.foodiary
+package com.sun.foodiary
 
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import com.example.foodiary.Class.ToEat
+import com.sun.foodiary.Class.ToEat
 import io.realm.Realm
 import io.realm.kotlin.createObject
 import io.realm.kotlin.where
 import kotlinx.android.synthetic.main.activity_eatlist_edit.*
 import org.jetbrains.anko.alert
-import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.yesButton
 import java.util.*
 
